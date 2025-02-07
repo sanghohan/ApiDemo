@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: ApiDemoTest
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 1
+      idle-timeout: 30000
+      connection-timeout: 2000
+      leak-detection-threshold: 5000
+
+  h2:
+    console:
+      enabled: false
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
+
+
+p6spy:
+  filter: true
+  include: SELECT,INSERT,UPDATE,DELETE
+  exclude: HikariPool, org.hibernate,org.springframework

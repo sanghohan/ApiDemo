@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: ApiDemo
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  datasource:
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 3
+      idle-timeout: 30000
+      connection-timeout: 2000
+      leak-detection-threshold: 5000
