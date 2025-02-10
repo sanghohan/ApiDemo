@@ -22,4 +22,9 @@ class ApiController(
         productService.addProduct(req)
         return "success"
     }
+
+    @GetMapping("/api/test/error")
+    fun error(): String {
+        throw RuntimeException("error")
+    }
 }

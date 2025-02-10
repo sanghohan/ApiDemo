@@ -15,6 +15,7 @@ spring:
       leak-detection-threshold: 5000
 
 logging:
+  config: classpath:logging/logback-spring.xml
   level:
     org:
       springframework: INFO
