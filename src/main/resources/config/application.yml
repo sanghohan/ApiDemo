@@ -13,3 +13,11 @@ spring:
       idle-timeout: 30000
       connection-timeout: 2000
       leak-detection-threshold: 5000
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate: INFO
+      com:
+        example: DEBUG
