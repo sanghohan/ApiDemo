@@ -38,6 +38,8 @@ dependencies {
     implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
     implementation("com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:1.10.0")
     implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.10.0")
+    implementation("net.logstash.logback:logstash-logback-encoder:7.3")
+    implementation("io.github.oshai:kotlin-logging-jvm:6.0.9")
 
     // openapi swagger
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")

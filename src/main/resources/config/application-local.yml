@@ -8,3 +8,12 @@ decorator:
   datasource:
     p6spy:
       enable-logging: true
+
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate: INFO
+      com:
+        example: DEBUG
