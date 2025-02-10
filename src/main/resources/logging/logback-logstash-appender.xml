@@ -2,7 +2,7 @@
 <included>
     <!-- Logstash로 로그 전송 -->
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>localhost:5001</destination>
+        <destination>localhost:5002</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc/>
@@ -20,7 +20,7 @@
             </providers>
 
             <fieldNames class="net.logstash.logback.fieldnames.ShortenedFieldNames"/>
-            <jsonGeneratorDecorator class="net.logstash.logback.decorate.PrettyPrintingJsonGeneratorDecorator"/>
+            <!--<jsonGeneratorDecorator class="net.logstash.logback.decorate.PrettyPrintingJsonGeneratorDecorator"/>-->
         </encoder>
     </appender>
 
