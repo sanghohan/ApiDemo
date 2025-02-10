@@ -12,7 +12,6 @@
                 <loggerName/>
                 <logLevel/>
                 <message/>
-
                 <!-- 예외 정보를 여기서 제공 (버전에 따라 태그 이름이 다를 수 있음) -->
                 <stackTrace/>
             </providers>
