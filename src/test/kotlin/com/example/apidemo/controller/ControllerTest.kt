@@ -35,8 +35,8 @@ class ControllerTest {
 
         //given
         every { productService.getProducts() } returns listOf(
-            ProductDto(id ="p0001", name = "test1", price = 1000.0, category = "game", seller = seller1.toDto()),
-            ProductDto(id = "p0002", name = "test2", price = 2000.0, category = "vod", seller = seller2.toDto())
+            ProductDto(id =1L, name = "test1", price = 1000.0, category = "game", seller = seller1.toDto()),
+            ProductDto(id =2L, name = "test2", price = 2000.0, category = "vod", seller = seller2.toDto())
         )
 
         val result = ApiController(productService).getProducts().also {

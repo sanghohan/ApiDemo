@@ -22,7 +22,7 @@ class ProductService (
 
     fun getProducts() = productRepository.findAll().map {
         ProductDto(
-            id = it.productId.toString(),
+            id = it.productId,
             name = it.name,
             price = it.price,
             category = it.category,

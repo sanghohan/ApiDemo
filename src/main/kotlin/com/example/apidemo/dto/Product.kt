@@ -17,9 +17,15 @@ data class ProductReq(
 }
 
 data class ProductDto(
-    val id: String? = null,
+    val id: Long? = null,
     val name: String? = null,
     val price: Double? = 0.0,
     val category: String? = "uncategorized",
-    val seller: SellerDto
+    val seller: SellerDto? = null
+)
+
+data class ProductSearchDto(
+    val id: Long? = null,
+    val name: String? = null,
+    val price: Double? = 0.0,
 )
