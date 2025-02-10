@@ -6,10 +6,11 @@
     <property scope="context" name="hostName" value="${HOSTNAME:-localhost}"/>
     <property scope="context" name="instanceName" value="${SERVERNAME:-local}"/>
 
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
-    <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+    <include resource="logging/logback-json-appender.xml"/>
     <include resource="logging/logback-logstash-appender.xml"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
 
     <!-- 콘솔 로그 출력 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
