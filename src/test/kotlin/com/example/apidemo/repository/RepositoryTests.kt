@@ -1,7 +1,6 @@
 package com.example.apidemo.repository
 
-import com.example.apidemo.dto.ProductReq
-import com.example.apidemo.dto.SellerReq
+import com.example.apidemo.dto.*
 import com.example.apidemo.repository.entity.ProductEntity
 import com.example.apidemo.repository.entity.SellerEntity
 import com.example.apidemo.support.RepositoryTest
@@ -78,7 +77,7 @@ class RepositoryTests (
         val product2 = ProductEntity(name = "태블릿", price = 2000.0, category = "전자제품", seller = seller1!!)
 
         // 연관관계 설정
-        seller1!!.products = mutableListOf(product1, product2)
+        seller1!!.products = mutableSetOf(product1, product2)
 
         // 저장
         sellerRepository.saveAndFlush(seller1!!)
@@ -92,6 +91,34 @@ class RepositoryTests (
         // 삭제 후 상품 개수 확인 (자동 삭제되어야 함)
         assertEquals(0, productRepository.findAll().size)
     }
+
+    @Test
+    fun testGenericFindByName() {
+        // 상품 생성
+        val product1 = ProductEntity(name = "스마트폰", price = 1000.0, category = "전자제품", seller = seller1!!)
+        val product2 = ProductEntity(name = "태블릿", price = 2000.0, category = "전자제품", seller = seller1!!)
+        val product3 = ProductEntity(name = "노트북", price = 3000.0, category = "전자제품", seller = seller1!!)
+
+        // 저장
+        productRepository.saveAllAndFlush(listOf(product1, product2, product3))
+
+        val allProducts = productRepository.findAll()
+
+        // ID와 Name만 조회
+        val basicProducts: List<BaseProductProjection> = productRepository.findByName("스마트폰", BaseProductProjection::class.java).toList()
+
+        basicProducts.forEach {
+            println("ID: ${it.getProductId()}, Name: ${it.getName()}")
+        }
+
+        // 모든 필드 조회 (Full Projection)
+        val fullProducts: List<FullProductProjection> = productRepository.findByName("스마트폰", FullProductProjection::class.java).toList()
+        fullProducts.forEach {
+            println("ID: ${it.getProductId()}, Name: ${it.getName()}, Price: ${it.getPrice()}")
+        }
+
+    }
+
 
     @Test
     fun nPlus1ProblemTest() {

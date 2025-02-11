@@ -24,8 +24,21 @@ data class ProductDto(
     val seller: SellerDto? = null
 )
 
+data class ProductOnlyNameDto(
+    val name: String? = null
+)
+
 data class ProductSearchDto(
     val id: Long? = null,
     val name: String? = null,
     val price: Double? = 0.0,
 )
+
+interface BaseProductProjection {
+    fun getProductId(): Long
+    fun getName(): String
+}
+
+interface FullProductProjection : BaseProductProjection {
+    fun getPrice(): Double
+}

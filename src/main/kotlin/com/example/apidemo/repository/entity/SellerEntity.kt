@@ -22,7 +22,7 @@ class SellerEntity(
     var phone: String? = null,
 
     @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    var products: MutableList<ProductEntity> = mutableListOf()
+    var products: MutableSet<ProductEntity> = mutableSetOf()
 
 ) {
     fun addProduct(product: ProductEntity) {
