@@ -11,6 +11,9 @@ class ProductEntity(
     @Column(name = "product_id")
     var productId: Long? = null, // 단일 기본 키
 
+    @Version
+    var version: Long? = 0,
+
     @Column(name = "name")
     var name: String? = null,
 

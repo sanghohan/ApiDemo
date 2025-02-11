@@ -38,14 +38,19 @@ class RepositoryTests (
         //val seller1 = sellerRepository.save(SellerReq(name = "판매자1", email = "seller1@naver.com", phone = "01040448500").toEntity())
         //val seller2 = sellerRepository.save(SellerReq(name = "판매자2", email = "seller2@naver.com", phone = "01040448500").toEntity())
 
-        val product1 = productRepository.save(ProductReq(name = "test1", price = 1000.0, category = "game", seller = seller1!!.toDto()).toEntity())
+        val product1 = (ProductReq(name = "test1", price = 1000.0, category = "game", seller = seller1!!.toDto()).toEntity())
             .also {
                 println(it.toString())
             }
-        val product2 = productRepository.save(ProductReq(name = "test2", price = 2000.0, category = "vod", seller = seller2!!.toDto()).toEntity())
+        val product2 = (ProductReq(name = "test2", price = 2000.0, category = "vod", seller = seller2!!.toDto()).toEntity())
             .also {
                 println(it.toString())
             }
+
+
+        productRepository.saveAllAndFlush(listOf(product1, product2)).also {
+            println(it.toString())
+        }
 
         val result = productRepository.findAllProductDTOs().also {
             println(it.toString())
@@ -76,7 +81,7 @@ class RepositoryTests (
         seller1!!.products = mutableListOf(product1, product2)
 
         // 저장
-        sellerRepository.save(seller1!!)
+        sellerRepository.saveAndFlush(seller1!!)
 
         // 저장된 상품 개수 확인
         assertEquals(2, productRepository.findAll().size)
@@ -114,7 +119,7 @@ class RepositoryTests (
 
         for(seller in sellers) {
             println("판매자 : ${seller.name}")
-            for(product in seller.products ?: emptyList()) {
+            for(product in seller.products) {
                 println("  - 상품 : ${product.name}, 가격 : ${product.price}")
             }
         }
