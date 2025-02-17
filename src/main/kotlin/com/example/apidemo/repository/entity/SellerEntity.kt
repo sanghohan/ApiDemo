@@ -21,7 +21,9 @@ class SellerEntity(
     @Column(name = "phone")
     var phone: String? = null,
 
-    @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    //@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @OneToMany
+    @MapsId("productId")
     var products: MutableSet<ProductEntity> = mutableSetOf()
 
 ) {

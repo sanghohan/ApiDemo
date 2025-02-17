@@ -51,6 +51,8 @@ class RepositoryTests (
             println(it.toString())
         }
 
+        val entity = productRepository.findAll().onEach { println(it.seller.toString()) }
+
         val result = productRepository.findAllProductDTOs().also {
             println(it.toString())
         }
